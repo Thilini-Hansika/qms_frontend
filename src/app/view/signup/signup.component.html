@@ -1,0 +1,88 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<section class="get-in-touch">
+   <h1 class="title">Register</h1>
+   <form #tellerForm="ngForm" class="contact-form row">
+
+      <div class="form-field col-lg-6">
+         <input id="name" [(ngModel)]="txtUserName"  [(ngModel)]="selectedTeller.userName" placeholder="Enater Your Name" name="name" 
+         requied #nam="ngModel" pattern="^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$"
+         [class.is-invalid]="nam.invalid && nam.touched" class="input-text js-input" type="text" >
+         <small class="text-danger" [class.d-none]="nam.valid || nam.untouched">Please Enter Valid Name</small>
+       
+      </div>
+      <div class="form-field col-lg-6 ">
+        <input  (click)="searchTeller()" type="button" class="btn-primary" value="Search">
+      </div>
+      <div class="form-field col-lg-6 ">
+         <input id="language" class="input-text js-input" placeholder="Enter Your Language"
+         required #language="ngModel" pattern="^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$"
+         [class.is-invalid]="language.invalid && language.touched"  [(ngModel)]="cashier.language"  name="language" [(ngModel)]="selectedTeller.language" type="text" required>
+         <small class="text-danger" [class.d-none]="language.valid ||  language.untouched" > Please Enter Your Language Correctly</small>
+         <!-- <label class="label" for="language">Language</label> -->
+      </div>
+      <div class="form-field col-lg-6 ">
+         <input id="branch" class="input-text js-input"name="branch" placeholder="Enter Branch Name"
+         required #branch="ngModel" pattern="^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$"
+         [class.is-invalid]="branch.invalid && branch.touched"[(ngModel)]="cashier.brancName" [(ngModel)]="selectedTeller.brancName" type="text" required>
+         <small class="text-danger" [class.d-none]="branch.valid ||  branch.untouched" > Please Enter Your Language Correctly</small>
+         <!-- <label class="label" for="branch">Branch Name</label> -->
+      </div>
+      <div class="form-field col-lg-6 ">
+        <input id="address" class="input-text js-input" name="address" placeholder="Enter Your address  "
+        required #address="ngModel" pattern="^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$"
+        [class.is-invalid]="address.invalid && address.touched"[(ngModel)]="cashier.address " [(ngModel)]="selectedTeller.address" type="text" required>
+        <small class="text-danger" [class.d-none]="address.valid ||  address.untouched" > Please Enter Your Address Correctly</small>
+        <!-- <label class="label" for="address">Address</label> -->
+     </div>
+     <div class="form-field col-lg-6 ">
+      <input id="contact" class="input-text js-input" name="contact"
+      required #contact="ngModel" pattern="[0-9]{10}" placeholder="Contact No:"
+      [class.is-invalid]="contact.invalid &&  contact.touched "[(ngModel)]="cashier.contactNo"  [(ngModel)]="selectedTeller.contactNo" type="text" required>
+      <small class="text-danger" [class.d-none]="contact.valid ||  contact.untouched" > Please Enter Your Conntact No Correctly</small>
+      <!-- <label class="label" for="contact">Contact No</label> -->
+     
+     </div>
+      <div class="form-field col-lg-12" >
+        <input id="email" class="input-text js-input" name="email" placeholder="Email"
+        required #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+        [class.is-invalid]="email.invalid &&  email.touched" [(ngModel)]="cashier.email" [(ngModel)]="selectedTeller.email" type="text"  required>
+        <small class="text-danger" [class.d-none]="email.valid ||  email.untouched" > Please Enter Your email No Correctly</small>
+       
+    
+       
+  </div>
+  <div class="form-field col-lg-6">
+   <input id="date" class="input-text js-input" placeholder="  Date"[(ngModel)]="cashier.date"  name="date" [(ngModel)]="selectedTeller.date" type="text" required>
+   <!-- <label class="label" for="email">Date</label> -->
+</div>
+
+  
+       <div class="form-field col-lg-6 ">
+         <input id="password" class="input-text js-input" name="password" placeholder="Password"
+         required #password="ngModel" pattern="^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$"
+         [class.is-invalid]="password.invalid && password.touched"[(ngModel)]="cashier.password" [(ngModel)]="selectedTeller.password" type="password" required>
+         <small class="text-danger" [class.d-none]="password.valid ||  password.untouched" > Please Enter Your Password Correctly</small>
+        
+      </div>
+
+      <!-- <div class="form-field col-lg-6">
+         <input id="confirmPassword" class="input-text js-input" placeholder="Confirm Password"  type="password" required>
+         <!-- <label class="label" for="confirmPassword">Confirm Password</label> -->
+      <!-- </div> --> 
+      <div class="row">
+      <div class="form-field col-lg-4">
+         <button class="submit-btn" type="button"  [disabled]="tellerForm.invalid"   (click)="saveTeller()"  >Submit</button>
+      </div>
+     <div class="form-field col-lg-4">
+      <input class="submit-btn" type="button" (click)="deleteTeller(txtUserName)"  value="Delete">
+   </div>
+   <div class="form-field col-lg-4">
+    <input class="submit-btn" type="button"  (click)="logout()"  value="Logout">
+ </div>
+      </div>
+   </form>
+</section>

@@ -1,0 +1,85 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="jumbotron jumbotron-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <h1 class="h1">
+                    Welcome </h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form   #homesForm="ngForm">
+                <div class="row">
+                    <div class="col-md-12">
+                      <h2>Waiting  List</h2>
+                    
+                    </div>
+                        <br>
+                    
+                </div>
+                
+                    <div class="search-hero">
+                      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a hero by id or name or country">
+                    </div>
+                    <table id="tblCustomers" class="table table-bordered table-hover">
+                      <thead>
+                      <tr>
+                        <th>Ticket NO</th>
+                        <th>Task</th>
+                        <th>Language</th>
+                        <th>Status</th>
+                       
+                      </tr>
+                      </thead>
+                      <tbody>
+                          <!--  | paginate: { itemsPerPage: 7, currentPage: p } -->
+                      <tr *ngFor="let i = index;let customer of customers | filter:searchText;"  
+                          (click)="selectCustomer(customer)" [class.selected]="customer==selectedCustomer" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+                        <td>{{customer.ticketno}}</td>
+                        <td>{{customer.task}}</td>
+                        <td>{{customer.language}}</td>
+                        <td>{{customer.status}}</td>
+                        <td>
+                          <i class="btn btn-danger fa fa-trash" (click)="deleteRecord(customer)" >end task</i>
+                        </td> 
+                       </tr>
+                      </tbody>
+                      <tfoot>
+                      <tr >
+                        <td colspan="4">
+                          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        </td>
+                      </tr>
+                      </tfoot>
+                    </table> 
+                   
+                </form>
+                
+            </div>
+           
+
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn-primary" (click)="logout()" >Log Out</button>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br>
+<div class="footer">
+    <p>© 2019 @Diumotics</p>
+</div>
